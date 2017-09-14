@@ -1,14 +1,7 @@
 #!/usr/bin/env python
-#####
 #
-# PyGlow
-#
-#####
-#
-# Python module to control Pimoronis PiGlow
+# Using Piglow to make a fading nightlight
 # [http://shop.pimoroni.com/products/piglow]
-#
-# * pulsetest.py - test the pulsing light feature
 #
 #####
 
@@ -18,10 +11,19 @@ from time import sleep
 
 pyglow = PyGlow()
 
+# Setup how many iterations we make
+# Total runtime will be:
+# times * ((ramp length * set length * .05) + 2 )
+# 999 * ((255 * 5 * .05) + 2)
+# 65,684 seconds = 1094 hours = 45 days
 times = 999
 
+# Setup our ramp values
 ramp = range(0,256)
 
+# Setup our color sets
+# setA fades out
+# setB fades in
 setA = [[1,7,13],[2,8,14],[3,9,15],[4,10,16],[5,11,17]]
 setB = [[2,8,14],[3,9,15],[4,10,16],[5,11,17],[1,7,13]]
 
@@ -42,6 +44,3 @@ for n in range(times):
 			sleep(.05)
 
 pyglow.all(0)
-# pyglow.led(1)
-# pyglow.led(7)
-# pyglow.led(13)
